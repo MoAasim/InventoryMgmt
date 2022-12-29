@@ -1,0 +1,10 @@
+{% extends "../layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content-section">
+    <h3>
+        You have been logged out. <a href="{% url 'login' %}">Login Again</a>
+    </h3>
+</div>
+{% endblock %}
