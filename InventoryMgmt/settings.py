@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-297vkf$9s#p@t$3uvlcn=+m&-qk$6f3b*zdb2db+)&n$$h(h4@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+#ALLOWED_HOSTS = []
 
 #DEBUG_PROPAGATE_EXCEPTIONS = True
 
@@ -137,11 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # crispy form
 CRISPY_TEMPLATE_PACK = 'bootstrap'
-
-# URLs to be used when logged in
-#LOGIN_REDIRECT_URL = "/inventory"
-#LOGIN_URL = "login"
-
 
 # for flash messages
 MESSAGE_TAGS = {

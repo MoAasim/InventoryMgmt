@@ -14,13 +14,12 @@
                     <th scope="col">Cost Per Item</th>
                     <th scope="col">Sales Or Revenue</th>
                     <th scope="col">Stock Date</th>
-                    <!--<th scope="col">Last Sale Date</th>-->
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 {% for inventory in inventories %}
-                    <tr style="cursor: pointer; cursor: hand;" onclick="window.location = `{% url 'per_product' inventory.id %}`">
+                    <tr style="cursor: pointer; cursor: hand;" onclick="window.location = `{% url 'per_product_view' inventory.id %}`">
                         <th scope="row" > {{ forloop.counter }} </th>
                         <th scope="row" > {{ inventory.name }} </th>
                         <th scope="row" > {{ inventory.quantity_in_stock }} </th>
@@ -28,7 +27,6 @@
                         <th scope="row" > {{ inventory.cost_per_item }} </th>
                         <th scope="row" > {{ inventory.sales }} </th>
                         <th scope="row" > {{ inventory.stock_date }} </th>
-                        <!-- <th scope="row" > (( inventory.last_sales_date )) </th> -->
                         <th scope="row" >
                             <a class="btn btn-success" href="{% url 'update_inventory' inventory.id %}">Update</a> / 
                             <a class="btn btn-danger" href="{% url 'delete_inventory' inventory.id %}">Delete</a>

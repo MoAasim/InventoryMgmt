@@ -1,10 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Inventory
-from django.contrib.auth.decorators import login_required
-from .forms import AddInventoryForm, UpdateInventoryForm
+from .forms import InventoryForm
 from django.contrib import messages
 
-#@login_required
 def inventory_list(request):
     inventories = Inventory.objects.all()
     context = {
@@ -14,7 +12,6 @@ def inventory_list(request):
     return render(request, "inventory/inventory_list.html", context=context)
 
 
-#@login_required
 def per_product_view(request, pk):
     inventory = get_object_or_404(Inventory, pk=pk)
     context = {
@@ -24,10 +21,9 @@ def per_product_view(request, pk):
     return render(request, "inventory/per_product.html", context=context)
 
 
-#@login_required
-def add_product(request):
+def add_inventory(request):
     if request.method == "POST":
-        add_form = AddInventoryForm(data=request.POST)
+        add_form = InventoryForm(data=request.POST)
         if add_form.is_valid():
             new_inventory = add_form.save(commit=False)
             if int(add_form.data['quantity_sold']) > int(add_form.data['quantity_in_stock']):
@@ -37,12 +33,11 @@ def add_product(request):
             messages.success(request, "Product successfully added!")
             return redirect("/inventory/")
     else:
-        add_form = AddInventoryForm()
+        add_form = InventoryForm()
     
     return render(request, "inventory/add_inventory.html", {"form": add_form})
 
 
-#@login_required
 def delete_inventory(request, pk):
     inventory = get_object_or_404(Inventory, pk=pk)
     inventory.delete()
@@ -51,11 +46,10 @@ def delete_inventory(request, pk):
 
 
 
-#@login_required
 def update_inventory(request, pk):
     inventory = get_object_or_404(Inventory, pk=pk)
     if request.method == "POST":
-        update_form = UpdateInventoryForm(data=request.POST)
+        update_form = InventoryForm(data=request.POST)
         if update_form.is_valid():
             inventory.name = update_form.data['name']
             inventory.quantity_in_stock = update_form.data['quantity_in_stock']
@@ -72,7 +66,7 @@ def update_inventory(request, pk):
             'quantity_sold': inventory.quantity_sold,
             'cost_per_item': inventory.cost_per_item
         }
-        update_form = UpdateInventoryForm(data=init_obj)
+        update_form = InventoryForm(data=init_obj)
     
     return render(request, "inventory/update_inventory.html", {"form": update_form})
 
@@ -80,6 +74,4 @@ def update_inventory(request, pk):
 def handler404(request, exception):
     return render(request, '404.html', status=404)
 
-# def handler500(request):
-#     return render(request, '500.html', status=500)
 
