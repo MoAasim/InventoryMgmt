@@ -37,11 +37,6 @@
                 {% endfor %}
             </tbody>
 
-            <!-- (% elif request.user.is_authenticated %)
-                <h3 class="text-center">Inventory is empty. <a style="text-decoration:none" href="(% url 'add_inventory' %)">Add Inventory</a></h3>
-                (% else %)
-                <h3 class="text-center">Inventory is empty.</h3> -->
-
         {% else %}
             <h3 class="text-center">Inventory is empty. <a style="text-decoration:none" href="{% url 'add_inventory' %}">Add Inventory</a></h3>
 

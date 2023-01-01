@@ -32,14 +32,6 @@
                   <a class="nav-link active" aria-current="page" href="{% url 'add_inventory' %}">Add Inventory</a>
                 </li>
 
-                <!-- (% if request.user.is_authenticated %)
-                  <li>
-                    <a class="nav-link active" aria-current="page" href="(% url 'add_inventory' %)">Add Inventory</a>
-                  </li>
-                  <li>
-                    <a class="nav-link active" aria-current="page" href="(% url 'logout' %)">Logout</a>
-                  </li>
-                (% endif %) -->
             </div>
           </div>
         </div>
@@ -50,17 +42,6 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10 col-sm-12 col-xm-12">
-                    <!-- {% if messages %}
-                        {% for message in messages %}
-                            {% if message.tags == "error" %}
-                                <div class="alert alert-danger mt-4">
-                            {%  else %}
-                                <div class="alert alert-{{ message.tags }} mt-4">
-                            {% endif %}
-                            {{ message }}
-                                </div>
-                        {% endfor %}
-                    {% endif %} -->
 
                     {% for message in messages %}
                     <div class="container-fluid p-0">
